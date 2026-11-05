@@ -1298,10 +1298,10 @@
       "control_variance": 44404040.97646123
     }
   },
-  "fit_seconds": 15.812523041997338,
+  "fit_seconds": 12.577786375011783,
   "history": {
     "timings": {
-      "total_seconds": 15.812523041997338
+      "total_seconds": 12.577786375011783
     },
     "fd_rows": [
       {

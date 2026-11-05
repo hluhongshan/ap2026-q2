@@ -1291,10 +1291,10 @@
       "control_variance": 83263.67834213318
     }
   },
-  "fit_seconds": 17.359256333002122,
+  "fit_seconds": 12.836462667008163,
   "history": {
     "timings": {
-      "total_seconds": 17.359256333002122
+      "total_seconds": 12.836462667008163
     },
     "fd_rows": [
       {

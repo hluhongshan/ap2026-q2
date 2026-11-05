@@ -1,6 +1,6 @@
 Timer unit: 1e-09 s
 
-Total time: 0.183793 s
+Total time: 0.183139 s
 File: /Users/luhao/E-Study/ap2026/code/approach3_q2a_mc.py
 Function: loop_prices at line 391
 
@@ -19,27 +19,27 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    401         1       1000.0   1000.0      0.0      dt = T / m
    402         1          0.0      0.0      0.0      drift = (r - 0.5 * sigma * sigma) * dt
    403         1       1000.0   1000.0      0.0      vol = sigma * math.sqrt(dt)
-   404         1       1000.0   1000.0      0.0      log_s0 = math.log(S0)
+   404         1       4000.0   4000.0      0.0      log_s0 = math.log(S0)
    405         1       2000.0   2000.0      0.0      n = z.shape[0]
-   406         1       6000.0   6000.0      0.0      asian = np.empty(n, dtype=float)
+   406         1       5000.0   5000.0      0.0      asian = np.empty(n, dtype=float)
    407         1       1000.0   1000.0      0.0      barrier = np.empty(n, dtype=float)
-   408         1          0.0      0.0      0.0      digital = np.empty(n, dtype=float)
-   409         1          0.0      0.0      0.0      european = np.empty(n, dtype=float)
-   410       501     127000.0    253.5      0.1      for i in range(n):
-   411       500     143000.0    286.0      0.1          log_s = log_s0
-   412       500     114000.0    228.0      0.1          sum_s = 0.0
-   413       500     125000.0    250.0      0.1          max_s = -math.inf
-   414    126500   32689000.0    258.4     17.8          for j in range(m):
-   415    126000   50162000.0    398.1     27.3              log_s += drift + vol * z[i, j]
-   416    126000   34683000.0    275.3     18.9              value = math.exp(log_s)
-   417    126000   31723000.0    251.8     17.3              sum_s += value
-   418    126000   30764000.0    244.2     16.7              if value > max_s:
-   419      9201    2216000.0    240.8      1.2                  max_s = value
-   420       500     147000.0    294.0      0.1          ST = math.exp(log_s)
-   421       500     130000.0    260.0      0.1          average = sum_s / m
+   408         1       1000.0   1000.0      0.0      digital = np.empty(n, dtype=float)
+   409         1       1000.0   1000.0      0.0      european = np.empty(n, dtype=float)
+   410       501     139000.0    277.4      0.1      for i in range(n):
+   411       500     135000.0    270.0      0.1          log_s = log_s0
+   412       500     115000.0    230.0      0.1          sum_s = 0.0
+   413       500     139000.0    278.0      0.1          max_s = -math.inf
+   414    126500   32700000.0    258.5     17.9          for j in range(m):
+   415    126000   49282000.0    391.1     26.9              log_s += drift + vol * z[i, j]
+   416    126000   33841000.0    268.6     18.5              value = math.exp(log_s)
+   417    126000   32671000.0    259.3     17.8              sum_s += value
+   418    126000   30840000.0    244.8     16.8              if value > max_s:
+   419      9201    2226000.0    241.9      1.2                  max_s = value
+   420       500     166000.0    332.0      0.1          ST = math.exp(log_s)
+   421       500     148000.0    296.0      0.1          average = sum_s / m
    422       500     231000.0    462.0      0.1          asian[i] = max(average - K, 0.0)
-   423       500     165000.0    330.0      0.1          barrier[i] = max(ST - K, 0.0) if max_s < B else 0.0
-   424       500     169000.0    338.0      0.1          digital[i] = 1.0 if ST > K else 0.0
-   425       500     189000.0    378.0      0.1          european[i] = max(ST - K, 0.0)
-   426         1       4000.0   4000.0      0.0      return {"asian": asian, "barrier": barrier, "digital": digital, "european": european}
+   423       500     159000.0    318.0      0.1          barrier[i] = max(ST - K, 0.0) if max_s < B else 0.0
+   424       500     148000.0    296.0      0.1          digital[i] = 1.0 if ST > K else 0.0
+   425       500     180000.0    360.0      0.1          european[i] = max(ST - K, 0.0)
+   426         1       3000.0   3000.0      0.0      return {"asian": asian, "barrier": barrier, "digital": digital, "european": european}
 
