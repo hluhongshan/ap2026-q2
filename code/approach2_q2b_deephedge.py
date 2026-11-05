@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
 APPROACH3_PATH = ROOT / "code" / "approach3_q2a_mc.py"
 APPROACH3_METRICS = ROOT / "results" / "approach3" / "IF" / "metrics.json"
 DEFAULT_SHIBOR = ROOT / "data" / "clean" / "shibor.csv"
-DEFAULT_OUT = ROOT / "results" / "approach4"
+DEFAULT_OUT = ROOT / "results" / "approach4" / "IF"
 DEFAULT_LOG = ROOT / ".cache" / "approach4_q2b.log"
 
 KAPPAS_BP = (0, 10, 50)
