@@ -1,7 +1,7 @@
 Timer unit: 1e-09 s
 
 Total time: 0.183139 s
-File: /Users/luhao/E-Study/ap2026/code/approach3_q2a_mc.py
+File: code/approach3_q2a_mc.py
 Function: loop_prices at line 391
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents

@@ -927,7 +927,7 @@ def performance_study(
         profiler.disable_by_count()
         stream = io.StringIO()
         profiler.print_stats(stream=stream)
-        profile_text = stream.getvalue()
+        profile_text = stream.getvalue().replace(f"{ROOT}/", "")
     except Exception as exc:
         profile_text = f"line_profiler failed: {type(exc).__name__}: {exc}\n"
     profile_path = out_dir / "line_profile.txt"
