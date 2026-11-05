@@ -1359,6 +1359,20 @@ def run_study(
     study_references, study_reference_errors, study_reference_choices = reference_tables(
         S0, K, r, sigma, HORIZON, MONITORING, B, hp_study
     )
+    study_fd = fd_bias_variance(
+        np.random.default_rng([args.seed, 777]),
+        S0,
+        K,
+        r,
+        sigma,
+        HORIZON,
+        MONITORING,
+        B,
+        study_references,
+        study_reference_errors,
+        args.n_fd,
+        args.fd_replications,
+    )
     study = convergence_study(
         np.random.default_rng([args.seed, 900]),
         S0,
@@ -1398,10 +1412,10 @@ def run_study(
         performance["profile_path"] = str(top_profile)
     elapsed = time.perf_counter() - start_time
     convergence_figure(study, study_references, study_dir / "convergence.html")
-    fd_figure(dataset_result["metrics"]["fd_bias_variance"], study_dir / "fd_bias_variance.html")
+    fd_figure(study_fd, study_dir / "fd_bias_variance.html")
     metrics = {
         "convergence": study,
-        "bias_variance": dataset_result["metrics"]["fd_bias_variance"],
+        "bias_variance": study_fd,
         "performance": performance,
         "references": study_references,
         "reference_errors": study_reference_errors,
@@ -1436,7 +1450,7 @@ def run_study(
         "fit_seconds": float(elapsed),
         "history": {
             "timings": {"study_seconds": elapsed},
-            "fd_rows": dataset_result["metrics"]["fd_bias_variance"]["rows"],
+            "fd_rows": study_fd["rows"],
         },
     }
 
