@@ -1,6 +1,6 @@
-# AP 2026
+# AP 2026 Q2: Monte Carlo pricing and deep hedging
 
-Advanced Programming 2026 coursework: Q1 implied-volatility surfaces, Q2 Monte Carlo and CVaR hedging, Q3 PMI regime forecasting.
+Q2 of the Advanced Programming 2026 coursework: Monte Carlo pricing of path-dependent payoffs under GBM (Q2A) and CVaR-optimal deep hedging (Q2B).
 
 ## Run
 
@@ -12,6 +12,9 @@ Clean-clone comparison: `python code/check_reproduction.py`
 
 ## Results
 
-- `results/approach2/io/` is a historical run from commit `664a716` whose code
-  has since changed. It is kept for the record and is **not** rerun by
-  `./reproduce.sh`; current Q1B output is `results/approach2/io_scaled/`.
+- `results/approach1/` holds the Q2A runs for IF, CU, RB, SC and the IF study.
+- `results/approach2/IF/` holds the Q2B deep-hedging run.
+
+## Provenance
+
+Split from the combined AP 2026 repository at parent tag `submission`, commit `4521da3`. Former `approach3` is now `approach1`; former `approach4` is now `approach2`. See `SPLIT_HISTORY.md` for the commit map and disclosure. `SESSION.md` is the full transcript for all questions and uses the old file names and hashes.
