@@ -11,8 +11,8 @@ import numpy as np
 import torch
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "code" / "approach4_q2b_deephedge.py"
-SPEC = importlib.util.spec_from_file_location("approach4_q2b_deephedge", MODULE_PATH)
+MODULE_PATH = ROOT / "code" / "approach2_q2b_deephedge.py"
+SPEC = importlib.util.spec_from_file_location("approach2_q2b_deephedge", MODULE_PATH)
 assert SPEC is not None and SPEC.loader is not None
 Q2B = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(Q2B)

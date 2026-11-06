@@ -21,7 +21,7 @@ from scipy.stats import kurtosis, norm
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN = ROOT / "data" / "clean"
 DEFAULT_SHIBOR = CLEAN / "shibor.csv"
-DEFAULT_OUT = ROOT / "results" / "approach3"
+DEFAULT_OUT = ROOT / "results" / "approach1"
 DATASETS = ("IF", "RB", "CU", "SC")
 PILLAR_DAYS = {"ON": 1, "1W": 7, "2W": 14, "1M": 30, "3M": 90, "6M": 180, "9M": 270, "1Y": 365}
 HORIZON = 1.0

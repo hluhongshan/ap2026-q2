@@ -35,11 +35,11 @@ from scipy.special import ndtr
 from torch import nn
 
 ROOT = Path(__file__).resolve().parents[1]
-APPROACH3_PATH = ROOT / "code" / "approach3_q2a_mc.py"
-APPROACH3_METRICS = ROOT / "results" / "approach3" / "IF" / "metrics.json"
+Q2A_PATH = ROOT / "code" / "approach1_q2a_mc.py"
+Q2A_METRICS = ROOT / "results" / "approach1" / "IF" / "metrics.json"
 DEFAULT_SHIBOR = ROOT / "data" / "clean" / "shibor.csv"
-DEFAULT_OUT = ROOT / "results" / "approach4" / "IF"
-DEFAULT_LOG = ROOT / ".cache" / "approach4_q2b.log"
+DEFAULT_OUT = ROOT / "results" / "approach2" / "IF"
+DEFAULT_LOG = ROOT / ".cache" / "approach2_q2b.log"
 
 KAPPAS_BP = (0, 10, 50)
 REBALANCE_DAYS = (1, 5, 21)
@@ -140,30 +140,30 @@ class RunLog:
             )
 
 
-def load_approach3():
-    spec = importlib.util.spec_from_file_location("approach3_q2a_mc", APPROACH3_PATH)
+def load_q2a():
+    spec = importlib.util.spec_from_file_location("approach1_q2a_mc", Q2A_PATH)
     if spec is None or spec.loader is None:
-        raise ImportError(f"cannot load {APPROACH3_PATH}")
+        raise ImportError(f"cannot load {Q2A_PATH}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
 
 def load_market_setup(dataset: str, T: float, shibor_path: Path) -> dict:
-    a3 = load_approach3()
-    frame = a3.load_futures(dataset)
-    calibration = a3.calibration_stats(frame["close"].to_numpy(dtype=float), frame["date"])
+    q2a = load_q2a()
+    frame = q2a.load_futures(dataset)
+    calibration = q2a.calibration_stats(frame["close"].to_numpy(dtype=float), frame["date"])
     sigma = float(calibration["sigma_annualized"])
-    shibor = a3.load_shibor(shibor_path)
-    curves = a3.build_rate_curves(shibor)
+    shibor = q2a.load_shibor(shibor_path)
+    curves = q2a.build_rate_curves(shibor)
     sorted_dates = np.array(sorted(curves), dtype="datetime64[ns]")
     if len(sorted_dates) == 0:
         raise ValueError("no usable SHIBOR curves")
     valuation_date = pd.Timestamp(frame["date"].iloc[-1])
-    r, curve_date = a3.zero_rate(curves, sorted_dates, valuation_date, T)
+    r, curve_date = q2a.zero_rate(curves, sorted_dates, valuation_date, T)
     reference_sigma = None
-    if APPROACH3_METRICS.exists():
-        payload = json.loads(APPROACH3_METRICS.read_text(encoding="utf-8"))
+    if Q2A_METRICS.exists():
+        payload = json.loads(Q2A_METRICS.read_text(encoding="utf-8"))
         reference_sigma = float(payload["params"]["sigma"])
     return {
         "sigma": sigma,

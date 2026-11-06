@@ -12,8 +12,8 @@ from scipy.integrate import quad
 from scipy.stats import norm
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "code" / "approach3_q2a_mc.py"
-SPEC = importlib.util.spec_from_file_location("approach3_q2a_mc", MODULE_PATH)
+MODULE_PATH = ROOT / "code" / "approach1_q2a_mc.py"
+SPEC = importlib.util.spec_from_file_location("approach1_q2a_mc", MODULE_PATH)
 assert SPEC is not None and SPEC.loader is not None
 Q2A = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(Q2A)
