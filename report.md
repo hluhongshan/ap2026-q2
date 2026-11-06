@@ -17,6 +17,8 @@ Section and table numbers below follow the parent report; only this question's s
 | `results/approach3/` | `results/approach1/` |
 | `results/approach4/` | `results/approach2/` |
 
+Some code comments, labels and JSON keys keep the old names, such as approach3 or approach5_members. They were left unchanged so that results stay directly comparable with the parent.
+
 ## 1. Summary
 
 The repository implements Q2 of the Advanced Programming 2026 brief, options A and B. Q2 prices path-dependent payoffs under GBM by Monte Carlo (Q2A) and learns a CVaR-optimal hedge (Q2B).
